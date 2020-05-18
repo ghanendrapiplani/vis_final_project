@@ -35,10 +35,10 @@
 </style>
 
 <body >
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-6" style="background-color: blue;"> <B>HEATMAP/SELECTION MAP</B> <BR/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin orci lacus, sagittis vel tortor non, mattis mattis elit. Nulla facilisis eu metus ac laoreet. Morbi et laoreet nunc, sed ultricies magna. Proin diam mi, accumsan imperdiet purus vitae, feugiat aliquam lorem. Donec in sollicitudin enim. Duis id interdum metus. Donec tincidunt lobortis tortor, nec efficitur magna pulvinar a. Nulla sit amet orci sit amet ipsum vestibulum pulvinar non vel lacus. Donec porttitor aliquet lectus.
-            Phasellus vestibulum elementum tortor, ac blandit eros dignissim in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tincidunt, purus molestie cursus interdum, lorem felis tempor metus, consectetur viverra sapien enim ultricies ipsum. Donec eu placerat urna, in congue nisl. Vivamus fermentum urna erat, et vulputate ligula vulputate vitae. Nullam vitae dolor sem. Sed sagittis tellus id diam aliquet, vitae tristique magna gravida. Cras imperdiet nisl et erat bibendum auctor. Maecenas vestibulum congue mi, sit amet volutpat nunc sollicitudin id. Curabitur consectetur quam mi, eget dictum eros rhoncus a. Nunc ut laoreet neque. Suspendisse finibus accumsan gravida. Ut et arcu ullamcorper nunc fringilla rhoncus sed ut risus.
+          <div class="col-6" > 
+                        <div id="chartdiv"></div>
 
 
         </div>
@@ -67,10 +67,65 @@
 </body>
 <div id = "dropDown" onkeydown="IgnoreAlpha(event);"></div>
 <div id="svg2" style="margin-top:50px; padding:2em"></div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<!-- <script src="d3-tip.js"></script>
-<script src="index.js"></script> -->
-
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>   
+<script src = "js\mapselector.js"></script>
+<!-- <script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>   
+<script>
+    am4core.ready(function() {
+    
+    // Themes begin
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+    
+    // Create map instance
+    var chart = am4core.create("chartdiv", am4maps.MapChart);
+    
+    // Set map definition
+    chart.geodata = am4geodata_worldLow;
+    
+    // Set projection
+    chart.projection = new am4maps.projections.NaturalEarth1();
+    
+    // Create map polygon series
+    var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    polygonSeries.mapPolygons.template.strokeWidth = 0.5;
+    
+    // Exclude Antartica
+    polygonSeries.exclude = ["AQ"];
+    
+    // Make map load polygon (like country names) data from GeoJSON
+    polygonSeries.useGeodata = true;
+    
+    // Configure series
+    var polygonTemplate = polygonSeries.mapPolygons.template;
+    polygonTemplate.tooltipText = "{name}";
+    polygonTemplate.fill = chart.colors.getIndex(0);
+    
+    // Create hover state and set alternative fill color
+    var hs = polygonTemplate.states.create("hover");
+    hs.properties.fill = chart.colors.getIndex(2);
+    
+    // Create active state
+    var activeState = polygonTemplate.states.create("active");
+    activeState.properties.fill = chart.colors.getIndex(4);
+    
+    // Create an event to toggle "active" state
+    polygonTemplate.events.on("hit", function(ev) {
+      ev.target.isActive = !ev.target.isActive;
+      console.log(ev.target.dataItem.dataContext.name);
+    })
+    
+    
+    var graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
+    
+    }); // end am4core.ready()
+    </script> -->
+    
 <div id="tooltip" class="hidden">
 </html>
