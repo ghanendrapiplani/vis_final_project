@@ -5,41 +5,77 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<style>
-.d3-tip.n:after {
-  margin: -2px 0 0 0;
-  top: 100%;
-  left: 0;
-}
-.d3-tip {
-  line-height: 1;
-  padding: 6px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  border-radius: 4px;
-  font-size: 12px;
-}
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
-/* Creates a small triangle extender for the tooltip */
-.d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  width: 100%;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.8);
-  content: "\25BC";
-  position: absolute;
-  text-align: center;
-}
+
+<style>
+  /* CSS goes here. */
+  .subunit {
+      fill: none;
+      stroke: #FFF;
+      stroke-width: 1px;
+  }
+  text.subunit-label {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      text-anchor: middle;
+      fill: #000;
+  }
+  .subunit-label {
+      display: none;
+  }
+  .graticule {
+      fill: none;
+      stroke: #aaa;
+      stroke-opacity: .5;
+      stroke-width: .5px;
+  }
+  .container {
+      /* float: left; */
+      height: 45%;
+      width: 50%;
+  }
+  .pie-chart {
+      float: bottom;
+  }
+  .d3-tip.n:after {
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
+  }
+  .d3-tip {
+    line-height: 1;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  /* Creates a small triangle extender for the tooltip */
+  .d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+  }
 </style>
+
+</head>
+
 
 <body >
     <div class="container-fluid">
       <div class="row">
         <div class="dropdown">
-          <button   class="dropbtn">Dropdown</button>
+          <button  ` class="dropbtn">Dropdown</button>
           <div id="myDropdown" class="dropdown-content">
             <a href="#">Link 1</a>
             <a href="#">Link 2</a>
@@ -49,7 +85,7 @@
       </div>
         <div class="row">
           <div class="col-6" > 
-                        <div id="chartdiv"></div>
+                        <div id="world_map"></div>
 
 
         </div>
@@ -76,15 +112,16 @@
         </div>
       </div>      
 </body>
+<script>  
+  var data_map = {{ data | safe }}
+  var worldjson_mapdata = {{ worldJSON | safe}}
+  console.log(worldjson_mapdata)
+  console.log(data_map)
+</script>
 <div id = "dropDown" onkeydown="IgnoreAlpha(event);"></div>
 <div id="svg2" style="margin-top:50px; padding:2em"></div>
-<script src="https://www.amcharts.com/lib/4/core.js"></script>
-<script src="https://www.amcharts.com/lib/4/maps.js"></script>
-<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
-<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 <script src = "{{ url_for('static', filename='mapselector.js')}}"></script>      
 <script>
-
 $(".dropdown years li a").click(function(){
   var selText = $(this).text();
   console.log( selText); 
