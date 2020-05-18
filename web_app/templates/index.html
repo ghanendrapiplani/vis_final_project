@@ -39,13 +39,19 @@
     <div class="container-fluid">
       <div class="row">
         <div class="dropdown">
-          <button   class="dropbtn">Dropdown</button>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-          </div>
+            <select id="map2" onchange="ddChange()">
+                <option value="Select Year">Select Year</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2009">2010</option>
+                <option value="2009">2011</option>
+                <option value="2009">2012</option>
+                <option value="2009">2013</option>
+                <option value="2009">2014</option>
+                <option value="2009">2015</option>
+            </select>
         </div>
+      </div>
       </div>
         <div class="row">
           <div class="col-6" > 
@@ -82,7 +88,9 @@
 <script src="https://www.amcharts.com/lib/4/maps.js"></script>
 <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-<script src = "{{ url_for('static', filename='mapselector.js')}}"></script>      
+<script src = "{{ url_for('static', filename='mapselector.js')}}"></script>
+<script src = "{{ url_for('static', filename='scatterplot.js')}}"></script>      
+
 <script>
 
 $(".dropdown years li a").click(function(){
