@@ -14,26 +14,6 @@ from sklearn.metrics import pairwise_distances
 # First of all you have to import it from the flask module:
 app = Flask(__name__)
 
-base_cols = ['AUSTRALIA - AUSTRALIAN DOLLAR/US$', 'EURO AREA - EURO/US$',
-             'NEW ZEALAND - NEW ZELAND DOLLAR/US$',
-             'UNITED KINGDOM - UNITED KINGDOM POUND/US$', 'BRAZIL - REAL/US$',
-             'CANADA - CANADIAN DOLLAR/US$', 'CHINA - YUAN/US$',
-             'HONG KONG - HONG KONG DOLLAR/US$', 'INDIA - INDIAN RUPEE/US$',
-             'KOREA - WON/US$', 'MEXICO - MEXICAN PESO/US$',
-             'SOUTH AFRICA - RAND/US$', 'SINGAPORE - SINGAPORE DOLLAR/US$',
-             'DENMARK - DANISH KRONE/US$', 'JAPAN - YEN/US$',
-             'MALAYSIA - RINGGIT/US$', 'NORWAY - NORWEGIAN KRONE/US$',
-             'SWEDEN - KRONA/US$', 'SRI LANKA - SRI LANKAN RUPEE/US$',
-             'SWITZERLAND - FRANC/US$', 'TAIWAN - NEW TAIWAN DOLLAR/US$',
-             'THAILAND - BAHT/US$']
-
-renamed_cols = ['AUSTRALIA_AUSDOLLARS', 'EUROPE_EURO', 'NEWZEALAND_NZDOLLAR',
-                'UNITEDKINGDOM_POUND', 'BRAZIL_REAL', 'CANADA_CANADIANDOLLAR',
-                'CHINA_YUAN', 'HONGKONG_HKDOLLAR', 'INDIA_INDIANRUPEE', 'KOREA_WON',
-                'MEXICO_PESO', 'SOUTHAFRICA_RAND', 'SINGAPORE_SINGAPOREDOLLAR',
-                'DENMARK_DANISHKRONE', 'JAPAN_YEN', 'MALAYSIZ_RINGGIT', 'NORWAY_NORWAYKRONE',
-                'SWEDEN_SWEDISHKRONE', 'SRILANKA_SRILANKANRUPEE', 'SWITZERLAND_FRANC', 'TAIWAN_NEWTAIWANDOLLAR',
-                'THAILAND_BAHT']
 
 @app.route("/")
 def index():
@@ -342,14 +322,15 @@ def scatter_matrix_kmeans():
 
 
 if __name__ == "__main__":
-    df = pd.read_csv('forex_rates.csv')
-    df_main = df.drop("Time Serie", axis=1)
-    df_main.columns = renamed_cols
-    print(df_main.columns)
-    for c in df_main.columns:
-        df_main[c] = df_main[c].map(lambda val: process_val(val))
-    scaler = StandardScaler()
-    df_main[df_main.columns] = scaler.fit_transform(df_main[df_main.columns])
-    df_main_random = df_main.sample(n=int(0.25 * len(df_main)))
-    df_main_kmeans = plot_k(3, df_main)
+    df = pd.read_csv('life_expectancy_data.csv', encoding='utf8')
+
+    # df_main = df.drop("Time Serie", axis=1)
+    # df_main.columns = renamed_cols
+    # print(df_main.columns)
+    # for c in df_main.columns:
+    #     df_main[c] = df_main[c].map(lambda val: process_val(val))
+    # scaler = StandardScaler()
+    # df_main[df_main.columns] = scaler.fit_transform(df_main[df_main.columns])
+    # df_main_random = df_main.sample(n=int(0.25 * len(df_main)))
+    # df_main_kmeans = plot_k(3, df_main)
     app.run(debug=True)

@@ -1,4 +1,4 @@
-
+var countries = ["IN", "CN", "KZ", "US"]
     am4core.ready(function() {
     
     // Themes begin
@@ -37,13 +37,21 @@
     var activeState = polygonTemplate.states.create("active");
     activeState.properties.fill = chart.colors.getIndex(4);
     
+    polygonTemplate.sele
+
     // Create an event to toggle "active" state
     polygonTemplate.events.on("hit", function(ev) {
       ev.target.isActive = !ev.target.isActive;
       console.log(ev.target.dataItem.dataContext.name);
     })
     
+    chart.events.on("ready", function(ev) {
+      for(var i = 0; i < countries.length; i++) {
+        var country = polygonSeries.getPolygonById(countries[i]);
+        country.isActive = true;
+    }
+    });
     
     var graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
     
-    }); // end am4core.ready() 
+    });

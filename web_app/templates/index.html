@@ -1,5 +1,9 @@
 <html>  
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <style>
 .d3-tip.n:after {
@@ -29,12 +33,44 @@
   text-align: center;
 }
 </style>
-<body onload="myFunction()"></body>
+
+<body >
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-6" > 
+                        <div id="chartdiv"></div>
+
+
+        </div>
+          <div class="col-6" style="background-color: green;"> <B>RADAR PLOT</B> <BR/> Pellentesque volutpat consequat dui vitae aliquet. Donec a enim sed urna iaculis fringilla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris ornare elit vitae felis varius viverra. Suspendisse fermentum nisi enim, nec cursus est elementum et. Nunc euismod neque vel mi commodo, et tristique urna volutpat. Donec vitae elementum mauris. Cras sed dui iaculis, lacinia odio sit amet, fermentum enim. Quisque sit amet sodales mi, sed blandit lorem. Fusce neque est, fringilla at lectus quis, efficitur tempus lorem. Sed ac interdum eros, pellentesque elementum sapien. Aliquam finibus magna a elit facilisis tempor.
+            Phasellus vestibulum elementum tortor, ac blandit eros dignissim in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tincidunt, purus molestie cursus interdum, lorem felis tempor metus, consectetur viverra sapien enim ultricies ipsum. Donec eu placerat urna, in congue nisl. Vivamus fermentum urna erat, et vulputate ligula vulputate vitae. Nullam vitae dolor sem. Sed sagittis tellus id diam aliquet, vitae tristique magna gravida. Cras imperdiet nisl et erat bibendum auctor. Maecenas vestibulum congue mi, sit amet volutpat nunc sollicitudin id. Curabitur consectetur quam mi, eget dictum eros rhoncus a. Nunc ut laoreet neque. Suspendisse finibus accumsan gravida. Ut et arcu ullamcorper nunc fringilla rhoncus sed ut risus.
+
+
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-6" style="background-color: yellow;"> <B>SCATTER PLOT</B> <BR/>Curabitur in consectetur dui. Maecenas varius sapien nec scelerisque auctor. Integer quis quam velit. Sed pharetra mollis mollis. Phasellus vestibulum suscipit nisi, vel ultricies purus finibus ut. Curabitur tristique mi sit amet egestas lacinia. Etiam nec auctor felis. Mauris vitae nisl quis enim faucibus pharetra. Aenean sagittis, odio vel lacinia pulvinar, lectus turpis tincidunt erat, vel vulputate metus odio ac urna.
+
+            Curabitur in consectetur dui. Maecenas varius sapien nec scelerisque auctor. Integer quis quam velit. Sed pharetra mollis mollis. Phasellus vestibulum suscipit nisi, vel ultricies purus finibus ut. Curabitur tristique mi sit amet egestas lacinia. Etiam nec auctor felis. Mauris vitae nisl quis enim faucibus pharetra. Aenean sagittis, odio vel lacinia pulvinar, lectus turpis tincidunt erat, vel vulputate metus odio ac urna.
+            Phasellus vestibulum elementum tortor, ac blandit eros dignissim in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tincidunt, purus molestie cursus interdum, lorem felis tempor metus, consectetur viverra sapien enim ultricies ipsum. Donec eu placerat urna, in congue nisl. Vivamus fermentum urna erat, et vulputate ligula vulputate vitae. Nullam vitae dolor sem. Sed sagittis tellus id diam aliquet, vitae tristique magna gravida. Cras imperdiet nisl et erat bibendum auctor. Maecenas vestibulum congue mi, sit amet volutpat nunc sollicitudin id. Curabitur consectetur quam mi, eget dictum eros rhoncus a. Nunc ut laoreet neque. Suspendisse finibus accumsan gravida. Ut et arcu ullamcorper nunc fringilla rhoncus sed ut risus.
+
+
+        </div>
+          <div class="col-6" style="background-color: red;"> <B>PARALLEL COORD</B> <BR/>###Phasellus v
+            Phasellus vestibulum elementum tortor, ac blandit eros dignissim in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tincidunt, purus molestie cursus interdum, lorem felis tempor metus, consectetur viverra sapien enim ultricies ipsum. Donec eu placerat urna, in congue nisl. Vivamus fermentum urna erat, et vulputate ligula vulputate vitae. Nullam vitae dolor sem. Sed sagittis tellus id diam aliquet, vitae tristique magna gravida. Cras imperdiet nisl et erat bibendum auctor. Maecenas vestibulum congue mi, sit amet volutpat nunc sollicitudin id. Curabitur consectetur quam mi, eget dictum eros rhoncus a. Nunc ut laoreet neque. Suspendisse finibus accumsan gravida. Ut et arcu ullamcorper nunc fringilla rhoncus sed ut risus.
+
+            estibulum elementum tortor, ac blandit eros dignissim in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tincidunt, purus molestie cursus interdum, lorem felis tempor metus, consectetur viverra sapien enim ultricies ipsum. Donec eu placerat urna, in congue nisl. Vivamus fermentum urna erat, et vulputate ligula vulputate vitae. Nullam vitae dolor sem. Sed sagittis tellus id diam aliquet, vitae tristique magna gravida. Cras imperdiet nisl et erat bibendum auctor. Maecenas vestibulum congue mi, sit amet volutpat nunc sollicitudin id. Curabitur consectetur quam mi, eget dictum eros rhoncus a. Nunc ut laoreet neque. Suspendisse finibus accumsan gravida. Ut et arcu ullamcorper nunc fringilla rhoncus sed ut risus.
+
+        </div>
+        </div>
+      </div>      
+</body>
 <div id = "dropDown" onkeydown="IgnoreAlpha(event);"></div>
 <div id="svg2" style="margin-top:50px; padding:2em"></div>
-<script src="https://d3js.org/d3.v4.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<!-- <script src="d3-tip.js"></script> -->
-<script src="/js/mapselector.js"></script>
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script src = "{{ url_for('static', filename='mapselector.js')}}"></script>      
 <div id="tooltip" class="hidden">
 </html>
