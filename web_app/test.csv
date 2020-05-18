@@ -1,0 +1,173 @@
+,Country,Life expectancy ,Id
+0,Afghanistan,65.0,AF
+8,Albania,77.8,AL
+16,Algeria,75.6,DZ
+24,Angola,52.4,AO
+32,Antigua and Barbuda,76.4,AG
+40,Argentina,76.3,AR
+48,Armenia,74.8,AM
+56,Australia,82.8,AU
+64,Austria,81.5,AT
+72,Azerbaijan,72.7,AZ
+80,Bahamas,76.1,BS
+88,Bahrain,76.9,BH
+96,Bangladesh,71.8,BD
+104,Barbados,75.5,BB
+112,Belarus,72.3,BY
+120,Belgium,81.1,BE
+128,Belize,71.0,BZ
+136,Benin,60.0,BJ
+144,Bhutan,69.8,BT
+152,Bosnia and Herzegovina,77.4,BA
+160,Botswana,65.7,BW
+168,Brazil,75.0,BR
+176,Brunei Darussalam,77.7,BN
+184,Bulgaria,74.5,BG
+192,Burkina Faso,59.9,BF
+200,Burundi,59.6,BI
+208,Cabo Verde,73.3,CV
+216,Cambodia,68.7,KH
+224,Cameroon,57.3,CM
+232,Canada,82.2,CA
+240,Central African Republic,52.5,CF
+248,Chad,53.1,TD
+256,Chile,85.0,CL
+264,China,76.1,CN
+272,Colombia,74.8,CO
+280,Comoros,63.5,KM
+288,Congo,64.7,CG
+297,Costa Rica,79.6,CR
+305,Croatia,78.0,HR
+313,Cuba,79.1,CU
+321,Cyprus,85.0,CY
+329,Czechia,78.8,CZ
+337,Democratic People's Republic of Korea,76.0,
+345,Democratic Republic of the Congo,59.8,
+353,Denmark,86.0,DK
+361,Djibouti,63.5,DJ
+370,Dominican Republic,73.9,DO
+378,Ecuador,76.2,EC
+386,Egypt,79.0,EG
+394,El Salvador,73.5,SV
+402,Equatorial Guinea,58.2,GQ
+410,Eritrea,64.7,ER
+418,Estonia,77.6,EE
+426,Ethiopia,64.8,ET
+434,Fiji,69.9,FJ
+442,Finland,81.1,FI
+450,France,82.4,FR
+458,Gabon,66.0,GA
+466,Gambia,61.1,GM
+474,Georgia,74.4,GE
+482,Germany,81.0,DE
+490,Ghana,62.4,GH
+498,Greece,81.0,GR
+506,Grenada,73.6,GD
+514,Guatemala,71.9,GT
+522,Guinea,59.0,GN
+530,Guinea-Bissau,58.9,GW
+538,Guyana,66.2,GY
+546,Haiti,63.5,HT
+554,Honduras,74.6,HN
+562,Hungary,75.8,HU
+570,Iceland,82.7,IS
+578,India,68.3,IN
+586,Indonesia,69.1,ID
+594,Iran (Islamic Republic of),75.5,
+602,Iraq,68.9,IQ
+610,Ireland,81.4,IE
+618,Israel,82.5,IL
+626,Italy,82.7,IT
+634,Jamaica,76.2,JM
+642,Japan,83.7,JP
+650,Jordan,74.1,JO
+658,Kazakhstan,72.0,KZ
+666,Kenya,63.4,KE
+674,Kiribati,66.3,KI
+682,Kuwait,74.7,KW
+690,Latvia,74.6,LV
+698,Lebanon,74.9,LB
+706,Lesotho,53.7,LS
+714,Liberia,61.4,LR
+722,Libya,72.7,LY
+730,Lithuania,73.6,LT
+738,Luxembourg,82.0,LU
+746,Madagascar,65.5,MG
+754,Malawi,58.3,MW
+762,Malaysia,75.0,MY
+770,Maldives,78.5,MV
+778,Mali,58.2,ML
+786,Malta,81.7,MT
+795,Mauritania,63.1,MR
+803,Mauritius,74.6,MU
+811,Mexico,76.7,MX
+819,Mongolia,68.8,MN
+827,Montenegro,76.1,ME
+835,Morocco,74.3,MA
+843,Mozambique,57.6,MZ
+851,Myanmar,66.6,MM
+859,Namibia,65.8,NA
+868,Nepal,69.2,NP
+876,Netherlands,81.9,NL
+884,New Zealand,81.6,NZ
+892,Nicaragua,74.8,NI
+900,Niger,61.8,NE
+908,Nigeria,54.5,NG
+916,Norway,81.8,NO
+924,Oman,76.6,OM
+932,Pakistan,66.4,PK
+941,Panama,77.8,PA
+949,Papua New Guinea,62.9,PG
+957,Paraguay,74.0,PY
+965,Peru,75.5,PE
+973,Philippines,68.5,PH
+981,Poland,77.5,PL
+989,Portugal,81.1,PT
+997,Qatar,78.2,QA
+1005,Romania,75.0,RO
+1013,Russian Federation,75.0,RU
+1021,Rwanda,66.1,RW
+1036,Saudi Arabia,74.5,SA
+1044,Senegal,66.7,SN
+1052,Serbia,75.6,RS
+1060,Seychelles,73.2,SC
+1068,Sierra Leone,51.0,SL
+1076,Singapore,83.1,SG
+1084,Slovakia,76.7,SK
+1092,Slovenia,88.0,SI
+1100,Solomon Islands,69.2,SB
+1108,Somalia,55.0,SO
+1116,South Africa,62.9,ZA
+1124,South Sudan,57.3,SS
+1132,Spain,82.8,ES
+1140,Sri Lanka,74.9,LK
+1148,Sudan,64.1,SD
+1156,Suriname,71.6,SR
+1164,Swaziland,58.9,
+1172,Sweden,82.4,SE
+1180,Switzerland,83.4,CH
+1188,Syrian Arab Republic,64.5,SY
+1196,Tajikistan,69.7,TJ
+1204,Thailand,74.9,TH
+1212,The former Yugoslav republic of Macedonia,75.7,
+1220,Timor-Leste,68.3,TL
+1228,Togo,59.9,TG
+1236,Tonga,73.5,TO
+1244,Trinidad and Tobago,71.2,TT
+1252,Tunisia,75.3,TN
+1260,Turkey,75.8,TR
+1268,Turkmenistan,66.3,TM
+1277,Uganda,62.3,UG
+1285,Ukraine,71.3,UA
+1293,United Arab Emirates,77.1,AE
+1301,United Kingdom of Great Britain and Northern Ireland,81.2,
+1309,United Republic of Tanzania,61.8,
+1317,United States of America,79.3,
+1325,Uruguay,77.0,UY
+1333,Uzbekistan,69.4,UZ
+1341,Vanuatu,72.0,VU
+1349,Venezuela (Bolivarian Republic of),74.1,
+1357,Viet Nam,76.0,VN
+1365,Yemen,65.7,YE
+1373,Zambia,61.8,ZM
+1381,Zimbabwe,67.0,ZW
