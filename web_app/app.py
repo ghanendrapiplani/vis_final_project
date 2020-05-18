@@ -3,7 +3,7 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
@@ -20,11 +20,12 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/kmeans_scree_plot")
+@app.route("/countryselected")
 def kmeans():
-    global df_main
-    df = kmeans_cluster(df_main)
-    return render_template("pca.html", data=pca(df),  title=json.dumps({"title": "PCA for KMeans Clustered Data"}))
+    # global df_main
+    arr = request.args.get('data')
+    print(arr.split(','))
+    return render_template("index.html", data="asdf",  title=json.dumps({"title": "PCA for KMeans Clustered Data"}))
 
 
 @app.route("/fulldata_scree_plot")
