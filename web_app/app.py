@@ -1,6 +1,8 @@
 import json
 from flask import Flask, render_template,request
-import pycountry
+import pandasql as ps
+from countryid_dict import c_id_dict
+from country_dict import c_dict
 import pandas as pd
 
 app = Flask(__name__)
@@ -8,6 +10,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    global c_dict
+    global df_main
     return render_template("index.html")
 
 
@@ -19,18 +23,25 @@ def kmeans():
     return render_template("index.html", data="asdf",  title=json.dumps({"title": "PCA for KMeans Clustered Data"}))
 
 
+def fx(row):
+    print("row")
+    print(row)
+    print(row['Country'])
+    print(c_dict[row['Country']])
+    row['Id'] = c_dict[row['Country']]
+
+
 if __name__ == "__main__":
-    df_main = pd.read_csv('life_expectancy_data.csv', encoding='utf8')
-    print(df_main)
-    print(list(pycountry.countries)[0])
-    cols = ['Id']
-    cols = ['Country']
-    df_ = pd.DataFrame(columns=cols)
-    rows_list = []
-    for c in list(pycountry.countries):
-        rows_list.append([c.alpha_2, c.name])
-    df = pd.DataFrame(rows_list)
-    print(df)
-    df_m = pd.merge(df_main, df_, on='Country', how='inner')
-    print(df_m.columns)
+    df_main = pd.read_csv('Life_Expectancy_Data.csv', encoding='utf8')
+    print("df mainn")
+    print(df_main.head())
+    print(c_id_dict)
+    lst_c = df_main['Country']
+    lst_year = df_main
+    q1 = """SELECT * FROM df_main where Year = 2015 """
+    df = df_main.query("Year == 2015")
+    df['Id'] = ""
+    df[['Country', 'Life expectancy ', 'Id']].to_csv("test.csv")
+    print(df[['Country', 'Life expectancy ', 'Id']])
+    # df_main.apply(lambda row: row['Id'] = c_dict(row['Country']))
     app.run(debug=True)
