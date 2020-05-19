@@ -1,14 +1,10 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 var data_map = {{ data | safe }}
-var worldjson_mapdata = {{ worldJSON | safe}}
-console.log(worldjson_mapdata)
-console.log(data_map)
+var worldjson_mapdata = {{ worldJSON | safe}} 
 var c_arr = ["IND", "RUS", "BAN", "USA", "AUS", "BRA"]
 
-console.log("mapselec")
-console.log(worldjson_mapdata)
-console.log(data_map)
-
+console.log("doing ajax call 1 for maps html") 
 processWorldD(worldjson_mapdata, data_map)
 
 var borderwidth=1.5;
@@ -65,10 +61,8 @@ function processWorldD(world, data) {
       }
       var subunits = topojson.feature(world, world.objects.subunits);
       subunits.features = subunits.features.filter(function(d){ return d.id !== "ATA"; });
-      console.log('subunits',subunits);
-      minDocCount = d3.min(subunits.features, function(d){ return d.properties.doc_count; });
-      console.log('minDocCount',minDocCount);
-      var doc_counts = subunits.features.map(function(d){ return d.properties.doc_count; });
+       minDocCount = d3.min(subunits.features, function(d){ return d.properties.doc_count; });
+       var doc_counts = subunits.features.map(function(d){ return d.properties.doc_count; });
       doc_counts = doc_counts.filter(function(d){ return d; }).sort(d3.ascending);
       //console.log('doc_counts',doc_counts);
       quantiles['0.95'] = d3.quantile(doc_counts, '0.95');
@@ -140,11 +134,10 @@ function processWorldD(world, data) {
                 .style("stroke", "white")
                 .style("stroke-width", borderwidth);
               }
-              console.log("CARR="+c_arr)
-              // ajax_fx("http://127.0.0.1:5000/radar");
-              // ajax_fx("http://127.0.0.1:5000/parallelcord");
-              // ajax_fx("http://127.0.0.1:5000/scatter");
-
+              console.log("CARR selected="+c_arr)
+              yr = $('#dropdown-years option[value=2008]').prop('selected', true).text()
+              console.log("year selected"+yr)
+              ajax_fx("http://127.0.0.1:5000/parallelplot?q="+c_arr.join()+"&yr="+yr, "#parallelplot")
 
           }
           function heatColor(d) {
@@ -164,11 +157,17 @@ function processWorldD(world, data) {
 
           for(var i = 0; i < c_arr.length; i++) {
             // coutryclicked(c_arr[i],1)
-            console.log("selected "+c_arr[i])
                 d3.selectAll('.subunit.ca'+c_arr[i])
                 .style("stroke", bordercolor)
                 .style("stroke-width", borderwidth);
         }
 
-}
+
+    }
+
+    function ajax_fx(url, div){ 
+    $.ajax({url: url, success: function(result){
+            $(div).html(result);
+    }});
+  }
 </script>

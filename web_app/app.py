@@ -37,8 +37,8 @@ map_data = {
    }
 }
 
-@app.route("/")
 
+@app.route("/")
 def index():
     # global df_main
     # df = df_main.query("Year == 2015")
@@ -46,12 +46,11 @@ def index():
     # df_req.columns = ['doc_count', 'key']
     # map_data['aggregations']['world_map']['buckets'] = df_req.to_dict('records')
     # print(map_data)
-    return render_template("index.html", data=map_data,
-                           worldJSON=json.load(open("static/world.json")))
+    return render_template("index.html")
 
 
-@app.route("/countryselected")
-def countryselected():
+@app.route("/mapplot")
+def mapplot():
     global df_main
     yr = request.args.get('q')
     print("YEAR")
@@ -63,6 +62,15 @@ def countryselected():
     df_req.to_csv("test"+yr+".csv")
     return render_template("map.html", data=map_data,
                            worldJSON=json.load(open("static/world.json")))
+
+
+@app.route("/parallelplot")
+def parallelplot():
+    global df_main
+    countries = request.args.get('q')
+    yr = request.args.get('yr')
+    print("countries={} year={}".format(countries, yr))
+    return render_template("parallel.html", data=countries)
 
 
 def prepare_for_client(df):
