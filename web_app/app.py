@@ -74,6 +74,7 @@ def parallelplot():
     df_year_filtered = df_year_filtered.drop_duplicates(subset='Country', keep='last')
     print('df_year_filtered')
     print(df_year_filtered)
+    df_year_filtered.columns = ['Country', 'Life Expectancy', 'Adult Mortality', 'Polio', 'BMI', 'Schooling', 'Income', 'Diptheria']
     client_data = prepare_for_client(df_year_filtered)
     print("countries={} year={}".format(country_codes, yr))
     return render_template("parallel.html", data=client_data)
@@ -84,6 +85,8 @@ def scatterplot():
     global df_main
     country_codes = request.args.get('q').split(',')
     criteria = request.args.get('cr')
+    if request.args.get('cr') == 'Population':
+        criteria = 'Population_x'
     columns = ['Life expectancy ', criteria]
     sp_df = df_main[df_main['iso3'].isin(country_codes)][columns]
     sp_df = sp_df.fillna(sp_df.mean())
@@ -91,6 +94,21 @@ def scatterplot():
     print("countries={} criteria={}".format(country_codes, criteria))
     print(sp_df)
     return render_template("scatter.html", data=client_data)
+
+
+@app.route("/radarplot")
+def radarplot():
+    global df_main
+    country_codes = request.args.get('q').split(',')[:4]
+    yr = request.args.get('yr')
+    dimensions = ['Country', 'Life expectancy ', 'Adult Mortality', 'Polio', ' BMI ', 'Schooling', 'Income composition of resources', 'Diphtheria ']
+    df_country_filtered = df_main[df_main['iso3'].isin(country_codes)]
+    df_year_filtered = df_country_filtered[df_country_filtered['Year'].isin([yr])][dimensions]
+    df_year_filtered = df_year_filtered.fillna(df_year_filtered.mean())
+    df_year_filtered = df_year_filtered.drop_duplicates(subset='Country', keep='last')
+    df_year_filtered = df_year_filtered.fillna(df_year_filtered.mean())
+    client_data = prepare_for_client(df_year_filtered)
+    return render_template("radar.html", data=client_data)
 
 
 def prepare_for_client(df):
