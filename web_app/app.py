@@ -67,9 +67,8 @@ def fx(df_country_codes, country):
 
 if __name__ == "__main__":
     df_main = pd.read_csv('Life_Expectancy_Data.csv', encoding='utf8')
-    print(df_main)
     df_country_codes = pd.read_csv('country_lookup.csv')
-    print(df_country_codes.head())
-    df_main = df_main.merge(df_country_codes, on = 'Country', how='inner')
+    df_main = df_main.merge(df_country_codes, on='Country', how='inner')
+    print("res")
     # print(df_main.to_csv("test.csv"))
     app.run(debug=True)

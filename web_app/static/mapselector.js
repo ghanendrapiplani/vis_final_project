@@ -1,4 +1,4 @@
-var c_arr = ["IND", "CHN", "AFG", "USA"]
+var c_arr = ["IND", "RUS", "BAN", "USA", "AUS", "BRA"]
 
 console.log("mapselec")
 console.log(worldjson_mapdata)
@@ -11,7 +11,7 @@ var bordercolor='red';
 
 function processWorldD(world, data) {
   var mapdata = {};
-  var palette = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]
+  var palette = ["#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]
   var width = 550, height = 500;
   var minDocCount = 0, quantiles = {};
   // projection definitions
@@ -24,7 +24,6 @@ function processWorldD(world, data) {
   // SVG related definitions
   var svg = d3.select("#world_map")
                   .append("svg")
-                  .attr('padding',50)
                   .attr("width", width)
                   .attr("height", height)
                   .append("g");
@@ -93,7 +92,7 @@ function processWorldD(world, data) {
 
           function mouseoverLegend(datum, index) { 
               d3.selectAll('.subunit-label.la'+datum.id+datum.properties.name.replace(/[ \.#']+/g,''))
-                  .style('display', 'inline-block').style('margin-right',60);
+                  .style('display', 'inline-block');
                   d3.selectAll('.subunit.ca'+datum.id)
                   .style('fill', heatColor(datum));
                   d3.selectAll('.subunit.ca'+datum.id)
