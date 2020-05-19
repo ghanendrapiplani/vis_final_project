@@ -11,6 +11,9 @@
 
 <style>
   /* CSS goes here. */
+  html {
+    overflow-y: hidden;
+}
   .subunit {
       fill: none;
       stroke: #FFF;
@@ -107,24 +110,28 @@
     .section-four {
         border: 1px black solid;
     }
+ 
 </style>
 
 </head>
 
 
-<body >
-    <div class="container-fluid"> 
-      </div>
-        <div class="row">
-          <div class="col-5 section-one" style="padding-top:30px; padding-left:50px;" >
+<body style="background-color: ghostwhite;">
+  
+    <div class="container-fluid" >
+        <div class="row h-50">
+          <div class="col-5 "  >
+            <h5 style="margin-left: 150px;">Heat Map of Life expectancy</h5>
              <div id="world_map"></div>
            </div>
-            <div class="col-5 section-two">
+            <div class="col-5 ">
+              <h5 style="margin-left: 150px;">Parallel coordinate plot.</h5>
               <div id="parallelplot"></div>
             </div>
             <div class = "col-2">
               <div id="dropdown-years">
-                <select id="map2" style="margin-left: 50px;" onchange="ddChange(this.value)">
+                <h5>Statistical Analysis on factors influencing world wide life expectancy.</h5>
+                <select id="map2" style="margin: 30px;" onchange="ddChange(this.value)">
                     <option value="Select Year">Select Year</option>
                     <option value="2008">2008</option>
                     <option value="2009">2009</option>
@@ -136,31 +143,33 @@
                     <option value="2015">2015</option>
                 </select>
             </div>
+            <h5 style="margin-top: 400px; margin-left:-100px" >Radar Plot. </h5>
             </div>
         </div>
         
-        <div class="row">
-          <div class="col-6 section-three" style="padding-top:30px; padding-left:50px;">
-              <div id="dropdown-criteria">
-            <select id="map3" onchange="crChange(this.value)">
-                <option value="criteria">Criteria</option>
-                <option value="GDP">GDP</option>
-                <option value="Adult Mortality">Adult Mortality</option>
-                <option value="infant deaths">infant deaths</option>
-                <option value="Schooling">Schooling</option>
-                <option value="Alcohol">Alcohol</option>
-                <option value="Population">Population</option>
-                <option value="Polio">Polio</option>
-                <option value="Hepatitis B">Hepatitis B</option>
-            </select>
-        </div>
+        <div class="row h-50" >
+          <div class="col-5  " style="margin-left: 50px; margin-top: -20px;">
+            <h5 >Criteria wise life expectancy scatter plot. </h5>
+            <div id="dropdown-criteria">
+              <select id="map3" onchange="crChange(this.value)">
+                  <option value="criteria">Criteria</option>
+                  <option value="GDP">GDP</option>
+                  <option value="Adult Mortality">Adult Mortality</option>
+                  <option value="infant deaths">infant deaths</option>
+                  <option value="Schooling">Schooling</option>
+                  <option value="Alcohol">Alcohol</option>
+                  <option value="Population">Population</option>
+                  <option value="Polio">Polio</option>
+                  <option value="Hepatitis B">Hepatitis B</option>
+              </select>
+            </div>
               <div id="scatterplot"></div>
-
         </div>
-          <div class="col-6 section-four" style="padding-top:30px; padding-left:50px;">
+        
+          <div class="col-5 " style=" margin-top: -40px;">
             <div id="radarplot"></div>
             <div id="radarchart"></div>
-        </div>
+        </div> 
         </div>    
 </body> 
 <script src = "{{ url_for('static', filename='radarchart.js')}}"></script>

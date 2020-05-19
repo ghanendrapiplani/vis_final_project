@@ -1,3 +1,4 @@
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 var data_map = {{ data | safe }}
@@ -13,12 +14,12 @@ var bordercolor='red';
 function processWorldD(world, data) {
   var mapdata = {};
   var palette = ["#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]
-  var width = 550, height = 500;
+  var width = 550, height = 400;
   var minDocCount = 0, quantiles = {};
   // projection definitions
   var projection = d3.geo.mercator()
-      .scale(75)
-      .translate([width/2, (height-50)/2])
+      .scale(70)
+      .translate([width/2, (height)/2])
       .precision(.1);
   var path = d3.geo.path().projection(projection);
   var graticule = d3.geo.graticule();
