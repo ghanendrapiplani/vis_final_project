@@ -136,8 +136,10 @@ function processWorldD(world, data) {
               }
               console.log("CARR selected="+c_arr)
               var yr = $("#dropdown-years option:selected").text();
+              var cr = $("#dropdown-criteria option:selected").text();
               console.log("year selected map.html"+yr)
               ajax_fx("http://127.0.0.1:5000/parallelplot?q="+c_arr.join()+"&yr="+yr, "#parallelplot")
+              ajax_fx("http://127.0.0.1:5000/scatterplot?q="+c_arr.join()+"&cr="+cr, "#scatterplot")
 
           }
           function heatColor(d) {
