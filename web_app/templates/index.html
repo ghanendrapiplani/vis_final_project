@@ -159,6 +159,7 @@
         </div>
           <div class="col-6 section-four" style="padding-top:30px; padding-left:50px;">
             <div id="radarplot"></div>
+            <div id="radarchart"></div>
         </div>
         </div>    
 </body>
@@ -166,11 +167,13 @@
 <!--<div id = "dropDown" onkeydown="IgnoreAlpha(event);"></div>-->
 <!--<div id="svg2" style="margin-top:50px; padding:2em"></div>-->
 <!-- <script src = "{{ url_for('static', filename='mapselector.js')}}"></script>-->
+<script src = "{{ url_for('static', filename='radarchart.js')}}"></script>
 <script>
   var c_arr = ["IND", "RUS", "BAN", "USA", "AUS", "BRA"]
   $('#map2').val('2015').trigger('change');
   $('#map3').val('GDP').trigger('change');
   ajax_fx("http://127.0.0.1:5000/mapplot?q="+yr,"#world_map")
+  ajax_fx("http://127.0.0.1:5000/radarplot?q="+c_arr.join()+"&yr="+yr,"#radarplot")
   function ddChange(val){
     yr = $("#dropdown-years option:selected").text();
     console.log("calling for year = "+val)
@@ -186,6 +189,7 @@
   }
   function ajax_fx(url, div){ 
     $.ajax({url: url, success: function(result){
+      console.log("result") 
             $(div).html(result);
     }});
   }
