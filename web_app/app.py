@@ -55,9 +55,11 @@ def mapplot():
     yr = request.args.get('q')
     print("YEAR")
     print(yr)
-    df = df_main.query("Year == "+yr)
+    # df = df_main.query("Year == "+yr)
+    df = df_main[df_main['Year'].isin([yr])]
     df_req = df[['Life expectancy ', 'iso3']]
     df_req.columns = ['doc_count', 'key']
+    df_req = df_req.fillna(df_req.mean())
     map_data['aggregations']['world_map']['buckets'] = df_req.to_dict('records')
     df_req.to_csv("test"+yr+".csv")
     return render_template("map.html", data=map_data,
@@ -70,7 +72,7 @@ def parallelplot():
     countries = request.args.get('q')
     yr = request.args.get('yr')
     print("countries={} year={}".format(countries, yr))
-    return render_template("parallel.html", data=countries)
+    return render_template("parallel.html", data=countries, year=yr)
 
 
 def prepare_for_client(df):

@@ -135,8 +135,8 @@ function processWorldD(world, data) {
                 .style("stroke-width", borderwidth);
               }
               console.log("CARR selected="+c_arr)
-              yr = $('#dropdown-years option[value=2008]').prop('selected', true).text()
-              console.log("year selected"+yr)
+              var yr = $("#dropdown-years option:selected").text();
+              console.log("year selected map.html"+yr)
               ajax_fx("http://127.0.0.1:5000/parallelplot?q="+c_arr.join()+"&yr="+yr, "#parallelplot")
 
           }
@@ -161,8 +161,6 @@ function processWorldD(world, data) {
                 .style("stroke", bordercolor)
                 .style("stroke-width", borderwidth);
         }
-
-
     }
 
     function ajax_fx(url, div){ 

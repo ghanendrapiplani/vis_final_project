@@ -119,12 +119,13 @@
 <!-- <script src = "{{ url_for('static', filename='mapselector.js')}}"></script>-->
 <script>
   var c_arr = ["IND", "RUS", "BAN", "USA", "AUS", "BRA"]
-  
-  ajax_fx("http://127.0.0.1:5000/mapplot?q=2008","#world_map")
-  ajax_fx("http://127.0.0.1:5000/parallelplot?q="+c_arr.join()+"&yr=2008","#parallelplot")
+  $('#map2').val('2015').trigger('change');
+  ajax_fx("http://127.0.0.1:5000/mapplot?q="+yr,"#world_map")
   function ddChange(val){
+    yr = $("#dropdown-years option:selected").text();
     console.log("calling for year = "+val)
     ajax_fx("http://127.0.0.1:5000/mapplot?q="+val,"#world_map")
+    ajax_fx("http://127.0.0.1:5000/parallelplot?q="+c_arr.join()+"&yr="+yr,"#parallelplot")
   }
   function ajax_fx(url, div){
     $(".loader").show();
