@@ -127,8 +127,7 @@
     ajax_fx("http://127.0.0.1:5000/mapplot?q="+val,"#world_map")
     ajax_fx("http://127.0.0.1:5000/parallelplot?q="+c_arr.join()+"&yr="+yr,"#parallelplot")
   }
-  function ajax_fx(url, div){
-    $(".loader").show();
+  function ajax_fx(url, div){ 
     $.ajax({url: url, success: function(result){
             $(div).html(result);
     }});
