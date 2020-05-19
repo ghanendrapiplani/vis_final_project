@@ -195,9 +195,7 @@ function RadarChart(id, data, options) {
 		.attr("d", function(d,i) { return radarLine(d); })
 		.style("fill", function(d,i) { return cfg.color(i); })
 		.style("fill-opacity", cfg.opacityArea)
-		.on('mouseover', function (d,i){
-			console.log("d", d);
-			console.log("this", this);
+		.on('mouseover', function (d,i){ 
 			//Dim all blobs
 			d3.selectAll(".radarArea")
 				.transition().duration(200)

@@ -113,29 +113,29 @@
 
 
 <body >
-    <div class="container-fluid">
-      <div class="row">
-        <div id="dropdown-years">
-            <select id="map2" style="margin-left: 50px;" onchange="ddChange(this.value)">
-                <option value="Select Year">Select Year</option>
-                <option value="2008">2008</option>
-                <option value="2009">2009</option>
-                <option value="2010">2010</option>
-                <option value="2011">2011</option>
-                <option value="2012">2012</option>
-                <option value="2013">2013</option>
-                <option value="2014">2014</option>
-                <option value="2015">2015</option>
-            </select>
-        </div>
-      </div>
+    <div class="container-fluid"> 
       </div>
         <div class="row">
-          <div class="col-6 section-one" style="padding-top:30px; padding-left:50px;" >
+          <div class="col-5 section-one" style="padding-top:30px; padding-left:50px;" >
              <div id="world_map"></div>
            </div>
-            <div class="col-6 section-two">
-        <div id="parallelplot"></div>
+            <div class="col-5 section-two">
+              <div id="parallelplot"></div>
+            </div>
+            <div class = "col-2">
+              <div id="dropdown-years">
+                <select id="map2" style="margin-left: 50px;" onchange="ddChange(this.value)">
+                    <option value="Select Year">Select Year</option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                </select>
+            </div>
             </div>
         </div>
         
@@ -162,11 +162,7 @@
             <div id="radarchart"></div>
         </div>
         </div>    
-</body>
-
-<!--<div id = "dropDown" onkeydown="IgnoreAlpha(event);"></div>-->
-<!--<div id="svg2" style="margin-top:50px; padding:2em"></div>-->
-<!-- <script src = "{{ url_for('static', filename='mapselector.js')}}"></script>-->
+</body> 
 <script src = "{{ url_for('static', filename='radarchart.js')}}"></script>
 <script>
   var c_arr = ["IND", "RUS", "BAN", "USA", "AUS", "BRA"]
