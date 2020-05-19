@@ -4,7 +4,17 @@ from countryid_dict import c_id_dict
 from country_dict import c_dict
 import pandas as pd
 
+
 app = Flask(__name__)
+
+
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+  return response
+
 
 map_data = {
    "took": 492,
@@ -28,25 +38,31 @@ map_data = {
 }
 
 @app.route("/")
+
 def index():
-    global c_dict
-    global df_main
-    df = df_main.query("Year == 2015")
-    df_req = df[['Life expectancy ','iso3']]
-    df_req.columns = ['doc_count', 'key']
-    map_data['aggregations']['world_map']['buckets'] = df_req.to_dict('records')
-    print(map_data)
+    # global df_main
+    # df = df_main.query("Year == 2015")
+    # df_req = df[['Life expectancy ','iso3']]
+    # df_req.columns = ['doc_count', 'key']
+    # map_data['aggregations']['world_map']['buckets'] = df_req.to_dict('records')
+    # print(map_data)
     return render_template("index.html", data=map_data,
                            worldJSON=json.load(open("static/world.json")))
-    # return render_template("index.html", data=,)
 
 
 @app.route("/countryselected")
 def countryselected():
-    # global df_main
-    arr = request.args.get('data')
-    print(arr.split(','))
-    return render_template("index.html", data="",  title=json.dumps({"title": "PCA for KMeans Clustered Data"}))
+    global df_main
+    yr = request.args.get('q')
+    print("YEAR")
+    print(yr)
+    df = df_main.query("Year == "+yr)
+    df_req = df[['Life expectancy ', 'iso3']]
+    df_req.columns = ['doc_count', 'key']
+    map_data['aggregations']['world_map']['buckets'] = df_req.to_dict('records')
+    df_req.to_csv("test"+yr+".csv")
+    return render_template("map.html", data=map_data,
+                           worldJSON=json.load(open("static/world.json")))
 
 
 def prepare_for_client(df):

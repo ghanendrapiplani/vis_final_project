@@ -74,17 +74,17 @@
 <body >
     <div class="container-fluid">
       <div class="row">
-        <div class="dropdown">
-            <select id="map2" onchange="ddChange()">
+        <div id="dropdown-years">
+            <select id="map2" onchange="ddChange(this.value)">
                 <option value="Select Year">Select Year</option>
                 <option value="2008">2008</option>
                 <option value="2009">2009</option>
-                <option value="2009">2010</option>
-                <option value="2009">2011</option>
-                <option value="2009">2012</option>
-                <option value="2009">2013</option>
-                <option value="2009">2014</option>
-                <option value="2009">2015</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
             </select>
         </div>
       </div>
@@ -92,8 +92,6 @@
         <div class="row">
           <div class="col-6" style="padding-top:30px; padding-left:50px;" > 
                         <div id="world_map"></div>
-
-
         </div> 
           <div class="col-6" style="background-color: green;"> <B>RADAR PLOT</B> <BR/> Pellentesque volutpat consequat dui vitae aliquet. Donec a enim sed urna iaculis fringilla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris ornare elit vitae felis varius viverra. Suspendisse fermentum nisi enim, nec cursus est elementum et. Nunc euismod neque vel mi commodo, et tristique urna volutpat. Donec vitae elementum mauris. Cras sed dui iaculis, lacinia odio sit amet, fermentum enim. Quisque sit amet sodales mi, sed blandit lorem. Fusce neque est, fringilla at lectus quis, efficitur tempus lorem. Sed ac interdum eros, pellentesque elementum sapien. Aliquam finibus magna a elit facilisis tempor.
             Phasellus vestibulum elementum tortor, ac blandit eros dignissim in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tincidunt, purus molestie cursus interdum, lorem felis tempor metus, consectetur viverra sapien enim ultricies ipsum. Donec eu placerat urna, in congue nisl. Vivamus fermentum urna erat, et vulputate ligula vulputate vitae. Nullam vitae dolor sem. Sed sagittis tellus id diam aliquet, vitae tristique magna gravida. Cras imperdiet nisl et erat bibendum auctor. Maecenas vestibulum congue mi, sit amet volutpat nunc sollicitudin id. Curabitur consectetur quam mi, eget dictum eros rhoncus a. Nunc ut laoreet neque. Suspendisse finibus accumsan gravida. Ut et arcu ullamcorper nunc fringilla rhoncus sed ut risus.
@@ -118,19 +116,22 @@
         </div>
       </div>      
 </body>
-<script>  
-  var data_map = {{ data | safe }}
-  var worldjson_mapdata = {{ worldJSON | safe}}
-  console.log(worldjson_mapdata)
-  console.log(data_map)
-</script>
+
 <div id = "dropDown" onkeydown="IgnoreAlpha(event);"></div>
 <div id="svg2" style="margin-top:50px; padding:2em"></div>
-<script src = "{{ url_for('static', filename='mapselector.js')}}"></script>      
+<!-- <script src = "{{ url_for('static', filename='mapselector.js')}}"></script>-->
 <script>
-$(".dropdown years li a").click(function(){
-  var selText = $(this).text();
-  console.log( selText); 
-});
-</script>>
+  $('#dropdown-years option[value=2008]').prop('selected', true);
+  ajax_fx("http://127.0.0.1:5000/countryselected?q=2008")
+  function ddChange(val){
+    console.log("calling for year = "+val)
+    ajax_fx("http://127.0.0.1:5000/countryselected?q="+val)
+  }
+  function ajax_fx(url){
+    $(".loader").show();
+    $.ajax({url: url, success: function(result){
+            $("#world_map").html(result);
+    }});
+}
+</script>
 </html>
