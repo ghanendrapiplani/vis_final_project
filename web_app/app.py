@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template,request
+from flask import Flask, render_template, request
 import pandas as pd
 
 
@@ -114,5 +114,5 @@ if __name__ == "__main__":
     df_country_codes = pd.read_csv('country_lookup.csv')
     df_main = df_main.merge(df_country_codes, on='Country', how='inner')
     print("res")
-    # print(df_main.to_csv("test.csv"))
+    print(df_main.to_csv("test.csv"))
     app.run(debug=True)

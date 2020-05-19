@@ -25,7 +25,7 @@ UID,iso2,iso3,code3,FIPS,Admin2,Province_State,Country,Lat,Long_,Combined_Key,Po
 96,BN,BRN,96,,,,Brunei,4.5353,114.7277,Brunei,437483
 100,BG,BGR,100,,,,Bulgaria,42.7339,25.4858,Bulgaria,6948445
 854,BF,BFA,854,,,,Burkina Faso,12.2383,-1.5616,Burkina Faso,20903278
-104,MM,MMR,104,,,,Burma,21.9162,95.956,Burma,54409794
+104,MM,MMR,104,,,,Myanmar,21.9162,95.956,Burma,54409794
 108,BI,BDI,108,,,,Burundi,-3.3731,29.9189,Burundi,11890781
 132,CV,CPV,132,,,,Cabo Verde,16.5388,-23.0418,Cabo Verde,555988
 116,KH,KHM,116,,,,Cambodia,11.55,104.9167,Cambodia,16718971
@@ -124,7 +124,8 @@ UID,iso2,iso3,code3,FIPS,Admin2,Province_State,Country,Lat,Long_,Combined_Key,Po
 400,JO,JOR,400,,,,Jordan,31.24,36.51,Jordan,10203140
 398,KZ,KAZ,398,,,,Kazakhstan,48.0196,66.9237,Kazakhstan,18776707
 404,KE,KEN,404,,,,Kenya,-0.0236,37.9062,Kenya,53771300
-410,KR,KOR,410,,,,"Korea, South",35.907757,127.766922,"Korea, South",51269183
+410,KR,KOR,410,,,,South Korea,35.907757,127.766922,South Korea,51269183
+19999,PR,PRK,1111,,,,North Korea,,,North Korea,
 383,XK,XKS,383,,,,Kosovo,42.602636,20.902977,Kosovo,1810366
 414,KW,KWT,414,,,,Kuwait,29.31166,47.481766,Kuwait,4270563
 417,KG,KGZ,417,,,,Kyrgyzstan,41.20438,74.766098,Kyrgyzstan,6524191
@@ -217,7 +218,7 @@ UID,iso2,iso3,code3,FIPS,Admin2,Province_State,Country,Lat,Long_,Combined_Key,Po
 752,SE,SWE,752,,,,Sweden,60.128161,18.643501,Sweden,10099270
 756,CH,CHE,756,,,,Switzerland,46.8182,8.2275,Switzerland,8654618
 760,SY,SYR,760,,,,Syria,34.802075,38.996815,Syria,17500657
-158,TW,TWN,158,,,,Taiwan*,23.7,121,Taiwan*,23816775
+158,TW,TWN,158,,,,Taiwan,23.7,121,Taiwan*,23816775
 762,TJ,TJK,762,,,,Tajikistan,38.861,71.2761,Tajikistan,9537642
 834,TZ,TZA,834,,,,Tanzania,-6.369028,34.888822,Tanzania,59734213
 764,TH,THA,764,,,,Thailand,15.870032,100.992541,Thailand,69799978
@@ -3648,3 +3649,4 @@ UID,iso2,iso3,code3,FIPS,Admin2,Province_State,Country,Lat,Long_,Combined_Key,Po
 84056041,US,USA,840,56041,Uinta,Wyoming,US,41.2878183,-110.5475782,"Uinta, Wyoming, US",20226
 84056043,US,USA,840,56043,Washakie,Wyoming,US,43.90451606,-107.680187,"Washakie, Wyoming, US",7805
 84056045,US,USA,840,56045,Weston,Wyoming,US,43.83961191,-104.5674881,"Weston, Wyoming, US",6927
+99877,,TKM,988,,,,Turkmenistan,,,,

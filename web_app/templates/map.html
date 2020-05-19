@@ -17,8 +17,8 @@ function processWorldD(world, data) {
   var minDocCount = 0, quantiles = {};
   // projection definitions
   var projection = d3.geo.mercator()
-      .scale((width + 1) / 2 / Math.PI)
-      .translate([width/2, height/2])
+      .scale(75)
+      .translate([width/2, (height-50)/2])
       .precision(.1);
   var path = d3.geo.path().projection(projection);
   var graticule = d3.geo.graticule();
