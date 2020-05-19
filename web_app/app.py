@@ -1,7 +1,5 @@
 import json
 from flask import Flask, render_template,request
-from countryid_dict import c_id_dict
-from country_dict import c_dict
 import pandas as pd
 
 
@@ -61,18 +59,23 @@ def mapplot():
     df_req.columns = ['doc_count', 'key']
     df_req = df_req.fillna(df_req.mean())
     map_data['aggregations']['world_map']['buckets'] = df_req.to_dict('records')
-    df_req.to_csv("test"+yr+".csv")
-    return render_template("map.html", data=map_data,
-                           worldJSON=json.load(open("static/world.json")))
+    return render_template("map.html", data=map_data, worldJSON=json.load(open("static/world.json")))
 
 
 @app.route("/parallelplot")
 def parallelplot():
     global df_main
-    countries = request.args.get('q')
+    country_codes = request.args.get('q').split(',')
     yr = request.args.get('yr')
-    print("countries={} year={}".format(countries, yr))
-    return render_template("parallel.html", data=countries, year=yr)
+    dimensions = ['Country', 'Life expectancy ', 'Adult Mortality', 'Polio', ' BMI ', 'Schooling', 'Income composition of resources', 'Diphtheria ']
+    df_country_filtered = df_main[df_main['iso3'].isin(country_codes)]
+    df_year_filtered = df_country_filtered[df_country_filtered['Year'].isin([yr])]
+    df_year_filtered = df_year_filtered.fillna(df_year_filtered.mean())
+    print('df_year_filtered')
+    print(df_year_filtered)
+    client_data = prepare_for_client(df_year_filtered[dimensions])
+    print("countries={} year={}".format(country_codes, yr))
+    return render_template("parallel.html", data=client_data)
 
 
 def prepare_for_client(df):
@@ -96,5 +99,5 @@ if __name__ == "__main__":
     df_country_codes = pd.read_csv('country_lookup.csv')
     df_main = df_main.merge(df_country_codes, on='Country', how='inner')
     print("res")
-    # print(df_main.to_csv("test.csv"))
+    print(df_main.to_csv("test.csv"))
     app.run(debug=True)
