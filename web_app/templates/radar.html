@@ -12,15 +12,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
 		<style>
-			/*body {
-				font-family: 'Open Sans', sans-serif;
-				font-size: 11px;
-				font-weight: 300;
-				fill: #242424;
-				text-align: center;
-				text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
-				cursor: default;
-			}*/
 
 			.legend {
 				font-family: 'Raleway', sans-serif;
@@ -63,10 +54,10 @@
 		        newSeries.values.push({"reason":"Life expectancy ","device":item.Country,"value":parseFloat(item['Life expectancy '])});
 		        newSeries.values.push({"reason":"Adult Mortality","device":item.Country,"value":parseFloat(item['Adult Mortality'])});
 		        newSeries.values.push({"reason":"Polio","device":item.Country,"value":parseFloat(item['Polio'])});
-		        newSeries.values.push({"reason":"BMI","device":item.Country,"value":parseFloat(item['BMI'])});
+		        newSeries.values.push({"reason":"BMI","device":item.Country,"value":parseFloat(item[' BMI '])});
 		        newSeries.values.push({"reason":"Schooling","device":item.Country,"value":parseFloat(item['Schooling'])});
-		        newSeries.values.push({"reason":"Income","device":item.Country,"value":parseFloat(item['Income'])});
-		        newSeries.values.push({"reason":"Diphtheria","device":item.Country,"value":parseFloat(item['Diphtheria'])});
+		        newSeries.values.push({"reason":"Income","device":item.Country,"value":parseFloat(item['Income composition of resources'])});
+		        newSeries.values.push({"reason":"Diphtheria","device":item.Country,"value":parseFloat(item['Diphtheria '])});
 
 		        new_data.push(newSeries);
 		    })
