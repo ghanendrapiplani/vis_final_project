@@ -69,13 +69,28 @@ def parallelplot():
     yr = request.args.get('yr')
     dimensions = ['Country', 'Life expectancy ', 'Adult Mortality', 'Polio', ' BMI ', 'Schooling', 'Income composition of resources', 'Diphtheria ']
     df_country_filtered = df_main[df_main['iso3'].isin(country_codes)]
-    df_year_filtered = df_country_filtered[df_country_filtered['Year'].isin([yr])]
+    df_year_filtered = df_country_filtered[df_country_filtered['Year'].isin([yr])][dimensions]
     df_year_filtered = df_year_filtered.fillna(df_year_filtered.mean())
+    df_year_filtered = df_year_filtered.drop_duplicates(subset='Country', keep='last')
     print('df_year_filtered')
     print(df_year_filtered)
-    client_data = prepare_for_client(df_year_filtered[dimensions])
+    client_data = prepare_for_client(df_year_filtered)
     print("countries={} year={}".format(country_codes, yr))
     return render_template("parallel.html", data=client_data)
+
+
+@app.route("/scatterplot")
+def scatterplot():
+    global df_main
+    country_codes = request.args.get('q').split(',')
+    criteria = request.args.get('cr')
+    columns = ['Life expectancy ', criteria]
+    sp_df = df_main[df_main['iso3'].isin(country_codes)][columns]
+    sp_df = sp_df.fillna(sp_df.mean())
+    client_data = prepare_for_client(sp_df)
+    print("countries={} criteria={}".format(country_codes, criteria))
+    print(sp_df)
+    return render_template("scatter.html", data=client_data)
 
 
 def prepare_for_client(df):

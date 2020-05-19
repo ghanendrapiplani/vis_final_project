@@ -7,7 +7,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<!--<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>-->
 
 
 <style>
@@ -66,6 +66,48 @@
     position: absolute;
     text-align: center;
   }
+    svg {
+    font: 10px sans-serif;
+    }
+    .background path {
+      fill: none;
+      stroke: #ddd;
+      shape-rendering: crispEdges;
+    }
+    .foreground path {
+      fill: none;
+      stroke: steelblue;
+    }
+
+    .brush .extent {
+      fill-opacity: .3;
+      stroke: #fff;
+      shape-rendering: crispEdges;
+    }
+
+    .axis line,
+    .axis path {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .axis text {
+      text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+      cursor: move;
+    }
+    .section-one {
+        border: 1px black solid;
+    }
+    .section-two {
+        border: 1px black solid;
+    }
+    .section-three {
+        border: 1px black solid;
+    }
+    .section-four {
+        border: 1px black solid;
+    }
 </style>
 
 </head>
@@ -90,42 +132,56 @@
       </div>
       </div>
         <div class="row">
-          <div class="col-6" style="padding-top:30px; padding-left:50px;" > 
-                        <div id="world_map"></div>
-        </div> 
+          <div class="col-6 section-one" style="padding-top:30px; padding-left:50px;" >
+             <div id="world_map"></div>
+           </div>
+            <div class="col-6 section-two">
         <div id="parallelplot"></div>
+            </div>
         </div>
-        </div>
+        
         <div class="row">
-          <div class="col-6" style="background-color: yellow;"> <B>SCATTER PLOT</B> <BR/>Curabitur in consectetur dui. Maecenas varius sapien nec scelerisque auctor. Integer quis quam velit. Sed pharetra mollis mollis. Phasellus vestibulum suscipit nisi, vel ultricies purus finibus ut. Curabitur tristique mi sit amet egestas lacinia. Etiam nec auctor felis. Mauris vitae nisl quis enim faucibus pharetra. Aenean sagittis, odio vel lacinia pulvinar, lectus turpis tincidunt erat, vel vulputate metus odio ac urna.
-
-            Curabitur in consectetur dui. Maecenas varius sapien nec scelerisque auctor. Integer quis quam velit. Sed pharetra mollis mollis. Phasellus vestibulum suscipit nisi, vel ultricies purus finibus ut. Curabitur tristique mi sit amet egestas lacinia. Etiam nec auctor felis. Mauris vitae nisl quis enim faucibus pharetra. Aenean sagittis, odio vel lacinia pulvinar, lectus turpis tincidunt erat, vel vulputate metus odio ac urna.
-            Phasellus vestibulum elementum tortor, ac blandit eros dignissim in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tincidunt, purus molestie cursus interdum, lorem felis tempor metus, consectetur viverra sapien enim ultricies ipsum. Donec eu placerat urna, in congue nisl. Vivamus fermentum urna erat, et vulputate ligula vulputate vitae. Nullam vitae dolor sem. Sed sagittis tellus id diam aliquet, vitae tristique magna gravida. Cras imperdiet nisl et erat bibendum auctor. Maecenas vestibulum congue mi, sit amet volutpat nunc sollicitudin id. Curabitur consectetur quam mi, eget dictum eros rhoncus a. Nunc ut laoreet neque. Suspendisse finibus accumsan gravida. Ut et arcu ullamcorper nunc fringilla rhoncus sed ut risus.
-
+          <div class="col-6 section-three" style="padding-top:30px; padding-left:50px;">
+              <div id="dropdown-criteria">
+            <select id="map3" onchange="crChange(this.value)">
+                <option value="criteria">Criteria</option>
+                <option value="GDP">GDP</option>
+                <option value="Adult Mortality">Adult Mortality</option>
+                <option value="infant deaths">infant deaths</option>
+                <option value="Schooling">Schooling</option>
+                <option value="Alcohol">Alcohol</option>
+                <option value="Population">Population</option>
+                <option value="Polio">Polio</option>
+                <option value="Hepatitis B">Hepatitis B</option>
+            </select>
+        </div>
+              <div id="scatterplot"></div>
 
         </div>
-          <div class="col-6" style="background-color: red;"> <B>PARALLEL COORD</B> <BR/>###Phasellus v
-            Phasellus vestibulum elementum tortor, ac blandit eros dignissim in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tincidunt, purus molestie cursus interdum, lorem felis tempor metus, consectetur viverra sapien enim ultricies ipsum. Donec eu placerat urna, in congue nisl. Vivamus fermentum urna erat, et vulputate ligula vulputate vitae. Nullam vitae dolor sem. Sed sagittis tellus id diam aliquet, vitae tristique magna gravida. Cras imperdiet nisl et erat bibendum auctor. Maecenas vestibulum congue mi, sit amet volutpat nunc sollicitudin id. Curabitur consectetur quam mi, eget dictum eros rhoncus a. Nunc ut laoreet neque. Suspendisse finibus accumsan gravida. Ut et arcu ullamcorper nunc fringilla rhoncus sed ut risus.
-
-            estibulum elementum tortor, ac blandit eros dignissim in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tincidunt, purus molestie cursus interdum, lorem felis tempor metus, consectetur viverra sapien enim ultricies ipsum. Donec eu placerat urna, in congue nisl. Vivamus fermentum urna erat, et vulputate ligula vulputate vitae. Nullam vitae dolor sem. Sed sagittis tellus id diam aliquet, vitae tristique magna gravida. Cras imperdiet nisl et erat bibendum auctor. Maecenas vestibulum congue mi, sit amet volutpat nunc sollicitudin id. Curabitur consectetur quam mi, eget dictum eros rhoncus a. Nunc ut laoreet neque. Suspendisse finibus accumsan gravida. Ut et arcu ullamcorper nunc fringilla rhoncus sed ut risus.
-
+          <div class="col-6 section-four" style="background-color: red;">
         </div>
-        </div>
-      </div>      
+        </div>    
 </body>
 
-<div id = "dropDown" onkeydown="IgnoreAlpha(event);"></div>
-<div id="svg2" style="margin-top:50px; padding:2em"></div>
+<!--<div id = "dropDown" onkeydown="IgnoreAlpha(event);"></div>-->
+<!--<div id="svg2" style="margin-top:50px; padding:2em"></div>-->
 <!-- <script src = "{{ url_for('static', filename='mapselector.js')}}"></script>-->
 <script>
   var c_arr = ["IND", "RUS", "BAN", "USA", "AUS", "BRA"]
   $('#map2').val('2015').trigger('change');
+  $('#map3').val('GDP').trigger('change');
   ajax_fx("http://127.0.0.1:5000/mapplot?q="+yr,"#world_map")
   function ddChange(val){
     yr = $("#dropdown-years option:selected").text();
     console.log("calling for year = "+val)
     ajax_fx("http://127.0.0.1:5000/mapplot?q="+val,"#world_map")
     ajax_fx("http://127.0.0.1:5000/parallelplot?q="+c_arr.join()+"&yr="+yr,"#parallelplot")
+  }
+  function crChange(val){
+    console.log('crChange called', val);
+    cr = $("#dropdown-criteria option:selected").text();
+    console.log("calling for criteria = "+cr)
+    ajax_fx("http://127.0.0.1:5000/scatterplot?q="+c_arr.join()+"&cr="+cr,"#scatterplot")
   }
   function ajax_fx(url, div){ 
     $.ajax({url: url, success: function(result){
